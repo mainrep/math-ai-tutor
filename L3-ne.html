@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 Revision – MYP4 Mathematics</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #faf8f3;
+  --cream: #f0ece0;
+  --navy: #0d2b55;
+  --teal: #1a6b8a;
+  --gold: #c9a84c;
+  --rose: #c0392b;
+  --green: #1a7a4a;
+  --purple: #5b3a8e;
+  --light-teal: #e8f4f8;
+  --light-gold: #fdf6e3;
+  --light-rose: #fdf0ee;
+  --light-green: #eaf7ef;
+  --light-purple: #f2eefa;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Source Serif 4', serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.hero {
+  background: var(--navy);
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+}
+
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--gold);
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: white;
+  margin-bottom: .5rem;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  color: rgba(255,255,255,.75);
+  font-style: italic;
+}
+
+.hero-chips {
+  display: flex;
+  justify-content: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+.chip {
+  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid rgba(201,168,76,.45);
+  color: var(--gold);
+  padding: .28rem .8rem;
+  border-radius: 999px;
+  font-size: .7rem;
+}
+
+.tab-bar {
+  display: flex;
+  background: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow-x: auto;
+}
+
+.tab-bar button {
+  flex: 1;
+  min-width: 140px;
+  padding: .9rem 1rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.55);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: .2s;
+  font-family: 'Source Serif 4', serif;
+}
+
+.tab-bar button.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.page { display: none; }
+.page.active { display: block; }
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  border-left: 5px solid var(--gold);
+  padding-left: 1rem;
+  margin: 2.5rem 0 1.2rem;
+  color: var(--navy);
+}
+
+.sub-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--teal);
+  margin: 1.8rem 0 .7rem;
+  font-size: 1.25rem;
+}
+
+.concept-card {
+  border-radius: 10px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.2rem;
+  border-left: 4px solid;
+}
+
+.blue { background: var(--light-teal); border-color: var(--teal); }
+.green { background: var(--light-green); border-color: var(--green); }
+.gold { background: var(--light-gold); border-color: var(--gold); }
+.purple { background: var(--light-purple); border-color: var(--purple); }
+.rose { background: var(--light-rose); border-color: var(--rose); }
+
+.card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .14em;
+  opacity: .65;
+  margin-bottom: .4rem;
+}
+
+.concept-card h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: .5rem;
+}
+
+.formula-box {
+  background: var(--navy);
+  color: white;
+  border-radius: 8px;
+  padding: 1rem 1.4rem;
+  margin: 1rem 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.formula-box .f-main {
+  color: var(--gold);
+  display: block;
+  margin-bottom: .3rem;
+}
+
+.worked-example {
+  border: 1.5px solid var(--teal);
+  border-radius: 10px;
+  margin: 1.4rem 0;
+  overflow: hidden;
+}
+
+.we-header {
+  background: var(--teal);
+  color: white;
+  padding: .7rem 1.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.we-question {
+  background: rgba(26,107,138,.07);
+  padding: .9rem 1.1rem;
+  font-style: italic;
+}
+
+.we-steps {
+  padding: 1rem 1.2rem;
+}
+
+.step {
+  display: flex;
+  gap: .9rem;
+  margin-bottom: .9rem;
+}
+
+.step-num {
+  min-width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .72rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.math {
+  background: var(--cream);
+  display: inline-block;
+  padding: .25rem .55rem;
+  border-radius: 4px;
+  margin-top: .25rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.answer-box {
+  background: var(--navy);
+  color: var(--gold);
+  padding: .55rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: .5rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.practice-q {
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.pq-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pq-toggle {
+  background: var(--navy);
+  color: var(--gold);
+  border: none;
+  border-radius: 6px;
+  padding: .4rem .75rem;
+  cursor: pointer;
+}
+
+.pq-answer {
+  display: none;
+  margin-top: .9rem;
+  padding-top: .9rem;
+  border-top: 1px dashed rgba(0,0,0,.15);
+}
+
+.pq-answer.open {
+  display: block;
+}
+
+.cheat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 1rem;
+}
+
+.cheat-card {
+  padding: 1rem 1.1rem;
+  border-radius: 8px;
+}
+
+.c1 { background: var(--light-teal); }
+.c2 { background: var(--light-gold); }
+.c3 { background: var(--light-purple); }
+.c4 { background: var(--light-green); }
+
+@media(max-width:600px){
+  .hero h1 { font-size: 1.7rem; }
+}
+/* AI Companion */
+
+#ai-companion {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 9999;
+}
+
+#ai-toggle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: none;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  transition: .25s;
+}
+
+#ai-toggle:hover {
+  transform: scale(1.06);
+}
+
+#ai-window {
+  width: 340px;
+  height: 520px;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,.2);
+  margin-bottom: 12px;
+  border: 1px solid rgba(0,0,0,.08);
+
+  transform: translateY(-10px);
+}
+
+.ai-header {
+  background: var(--navy);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-header span {
+  display: block;
+  color: rgba(255,255,255,.7);
+  font-size: .75rem;
+  margin-top: .2rem;
+}
+
+#ai-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+#ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #f7f5ef;
+}
+
+.ai-msg {
+  padding: .8rem 1rem;
+  border-radius: 12px;
+  margin-bottom: .9rem;
+  line-height: 1.6;
+  font-size: .95rem;
+}
+
+.ai-msg.bot {
+  background: white;
+  border-left: 4px solid var(--gold);
+}
+
+.ai-msg.user {
+  background: var(--navy);
+  color: white;
+  margin-left: 40px;
+}
+
+.ai-input-area {
+  display: flex;
+  border-top: 1px solid rgba(0,0,0,.08);
+}
+
+#ai-input {
+  flex: 1;
+  border: none;
+  padding: 1rem;
+  font-size: .95rem;
+  outline: none;
+}
+
+#ai-send {
+  border: none;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 0 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ai-msg ul {
+  margin-left: 1rem;
+  margin-top: .4rem;
+}
+
+@media(max-width:600px){
+
+  #ai-window{
+    width: calc(100vw - 30px);
+    height: 70vh;
+  }
+
+  #ai-toggle{
+    width: 60px;
+    height: 60px;
+  }
+
+  #ai-companion {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">IB MYP Year 4 · Mathematics</div>
+  <h1>Unit 4 <span>Revision Guide</span></h1>
+  <p>Probability & Statistics · EOYA Preparation</p>
+
+  <div class="hero-chips">
+    <span class="chip">Statistics</span>
+    <span class="chip">Probability</span>
+    <span class="chip">Worked Examples</span>
+    <span class="chip">Practice Questions</span>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="active" onclick="switchTab('concepts')">📖 Concepts</button>
+  <button onclick="switchTab('examples')">✏️ Examples</button>
+  <button onclick="switchTab('cheatsheet')">📋 Cheat Sheet</button>
+  <button onclick="switchTab('practice')">🎯 Practice</button>
+</div>
+
+<div id="page-concepts" class="page active">
+<div class="container">
+
+<div class="section-title">① Statistics</div>
+
+<div class="sub-title">Understanding Data</div>
+
+<div class="concept-card blue">
+  <div class="card-label">Foundations</div>
+  <h3>What is Data?</h3>
+  <p>Data is information collected for analysis. Statistics helps us organise, display, and interpret this information.</p>
+  <br>
+  <p><strong>Discrete data</strong> can only take specific values.</p>
+  <p><strong>Continuous data</strong> can take any value within an interval.</p>
+</div>
+
+<div class="concept-card green">
+  <div class="card-label">Important Vocabulary</div>
+  <h3>Population vs Sample</h3>
+  <p><strong>Population</strong> = the entire group being studied.</p>
+  <p><strong>Sample</strong> = a smaller group selected from the population.</p>
+  <br>
+  <p>Good samples should be random and unbiased.</p>
+</div>
+
+<div class="sub-title">Charts & Graphs</div>
+
+<div class="concept-card gold">
+  <div class="card-label">Graph Types</div>
+  <h3>Bar Charts vs Histograms</h3>
+  <ul style="margin-left:1.2rem;line-height:2">
+    <li>Bar charts use separated bars</li>
+    <li>Histograms are for continuous data</li>
+    <li>Histogram bars touch each other</li>
+    <li>Area represents frequency in histograms</li>
+  </ul>
+</div>
+
+<div class="formula-box">
+  <span class="f-main">Angle = (Frequency ÷ Total) × 360°</span>
+  Used to calculate pie chart sectors.
+</div>
+
+<div class="concept-card purple">
+  <div class="card-label">Data Interpretation</div>
+  <h3>Scatterplots & Correlation</h3>
+  <p>Scatterplots help identify relationships between variables.</p>
+  <br>
+  <ul style="margin-left:1.2rem;line-height:2">
+    <li>Positive correlation</li>
+    <li>Negative correlation</li>
+    <li>No correlation</li>
+    <li>Strong or weak relationships</li>
+  </ul>
+</div>
+
+<div class="concept-card blue">
+  <div class="card-label">Dispersion</div>
+  <h3>Box-and-Whisker Plots</h3>
+  <p>These show the spread of data using:</p>
+  <ul style="margin-left:1.2rem;line-height:2;margin-top:.5rem">
+    <li>Minimum</li>
+    <li>Lower quartile (Q1)</li>
+    <li>Median</li>
+    <li>Upper quartile (Q3)</li>
+    <li>Maximum</li>
+  </ul>
+</div>
+
+<div class="formula-box">
+  <span class="f-main">IQR = Q3 − Q1</span>
+  Interquartile range measures the spread of the middle 50% of the data.
+</div>
+
+<div class="sub-title">Measures of Central Tendency</div>
+
+<div class="concept-card rose">
+  <div class="card-label">Key Calculations</div>
+  <h3>Mean, Median & Mode</h3>
+  <ul style="margin-left:1.2rem;line-height:2">
+    <li><strong>Mean:</strong> arithmetic average</li>
+    <li><strong>Median:</strong> middle value</li>
+    <li><strong>Mode:</strong> most frequent value</li>
+  </ul>
+</div>
+
+<div class="section-title">② Probability</div>
+
+<div class="sub-title">Probability Basics</div>
+
+<div class="formula-box">
+  <span class="f-main">0 ≤ P(A) ≤ 1</span>
+  Probability values range from impossible (0) to certain (1).
+</div>
+
+<div class="concept-card green">
+  <div class="card-label">Foundations</div>
+  <h3>Relative Frequency</h3>
+  <p>Relative frequency estimates probability experimentally.</p>
+</div>
+
+<div class="formula-box">
+  <span class="f-main">P(A) = Successful Outcomes ÷ Total Outcomes</span>
+</div>
+
+<div class="sub-title">Combined Events</div>
+
+<div class="concept-card gold">
+  <div class="card-label">Addition Rule</div>
+  <h3>Adding Probabilities</h3>
+  <p>Used when finding the probability of A or B occurring.</p>
+</div>
+
+<div class="formula-box">
+  <span class="f-main">P(A ∪ B)=P(A)+P(B)−P(A ∩ B)</span>
+</div>
+
+<div class="concept-card purple">
+  <div class="card-label">Multiplication Rule</div>
+  <h3>Independent Events</h3>
+  <p>Multiply probabilities for independent events happening together.</p>
+</div>
+
+<div class="formula-box">
+  <span class="f-main">P(A ∩ B)=P(A) × P(B)</span>
+</div>
+
+<div class="concept-card blue">
+  <div class="card-label">Advanced</div>
+  <h3>Conditional Probability</h3>
+  <p>Conditional probability changes the sample space using given information.</p>
+</div>
+
+<div class="formula-box">
+  <span class="f-main">P(A|B)=P(A ∩ B)/P(B)</span>
+</div>
+
+<div class="concept-card rose">
+  <div class="card-label">Tree Diagrams</div>
+  <h3>With & Without Replacement</h3>
+  <p>Tree diagrams organise probabilities visually.</p>
+  <ul style="margin-left:1.2rem;line-height:2;margin-top:.5rem">
+    <li>Multiply along branches</li>
+    <li>Add probabilities at the ends</li>
+    <li>Without replacement changes probabilities</li>
+  </ul>
+</div>
+
+</div>
+</div>
+
+<div id="page-examples" class="page">
+<div class="container">
+
+<div class="section-title">Worked Examples</div>
+
+<div class="worked-example">
+  <div class="we-header">
+    <strong>Finding the Mean</strong>
+    <span>FOUNDATION</span>
+  </div>
+
+  <div class="we-question">
+    Find the mean of: 4, 7, 9, 10, 10
+  </div>
+
+  <div class="we-steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        Add all values.
+        <div class="math">4 + 7 + 9 + 10 + 10 = 40</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        Divide by the number of values.
+        <div class="math">40 ÷ 5 = 8</div>
+      </div>
+    </div>
+
+    <div class="answer-box">Mean = 8</div>
+
+  </div>
+</div>
+
+<div class="worked-example">
+  <div class="we-header">
+    <strong>Probability of a Dice Roll</strong>
+    <span>BASICS</span>
+  </div>
+
+  <div class="we-question">
+    Find the probability of rolling an even number on a fair die.
+  </div>
+
+  <div class="we-steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        Identify even outcomes.
+        <div class="math">2, 4, 6</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        Count successful outcomes.
+        <div class="math">3 successful outcomes</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        Divide by total outcomes.
+        <div class="math">3/6 = 1/2</div>
+      </div>
+    </div>
+
+    <div class="answer-box">Probability = 1/2</div>
+
+  </div>
+</div>
+
+<div class="worked-example">
+  <div class="we-header">
+    <strong>Conditional Probability</strong>
+    <span>ADVANCED</span>
+  </div>
+
+  <div class="we-question">
+    A bag contains 5 red and 3 blue counters. One red counter is removed. Find the probability the next counter is blue.
+  </div>
+
+  <div class="we-steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        After removing one red, there are 7 counters left.
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        Blue counters remain unchanged.
+        <div class="math">3 blue counters</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        Calculate probability.
+        <div class="math">3/7</div>
+      </div>
+    </div>
+
+    <div class="answer-box">Probability = 3/7</div>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+<div id="page-cheatsheet" class="page">
+<div class="container">
+
+<div class="section-title">Quick Cheat Sheet</div>
+
+<div class="cheat-grid">
+
+<div class="cheat-card c1">
+<h4>Statistics</h4>
+<ul style="margin-left:1rem;line-height:2">
+<li>Mean = total ÷ number</li>
+<li>Median = middle value</li>
+<li>Mode = most frequent</li>
+<li>Range = max − min</li>
+</ul>
+</div>
+
+<div class="cheat-card c2">
+<h4>Graphs</h4>
+<ul style="margin-left:1rem;line-height:2">
+<li>Histogram bars touch</li>
+<li>Scatterplots show relationships</li>
+<li>Box plots show spread</li>
+<li>Cumulative frequency increases</li>
+</ul>
+</div>
+
+<div class="cheat-card c3">
+<h4>Probability</h4>
+<ul style="margin-left:1rem;line-height:2">
+<li>0 ≤ P(A) ≤ 1</li>
+<li>Multiply along branches</li>
+<li>Add separate outcomes</li>
+<li>Without replacement changes totals</li>
+</ul>
+</div>
+
+<div class="cheat-card c4">
+<h4>Correlation</h4>
+<ul style="margin-left:1rem;line-height:2">
+<li>Positive correlation</li>
+<li>Negative correlation</li>
+<li>No correlation</li>
+<li>Correlation ≠ causation</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div id="page-practice" class="page">
+<div class="container">
+
+<div class="section-title">Practice Questions</div>
+
+<div class="practice-q">
+<div class="pq-top">
+<div>
+<strong>1.</strong> Find the median of: 3, 6, 8, 11, 15
+</div>
+<button class="pq-toggle" onclick="toggleAnswer(this)">Show Answer</button>
+</div>
+<div class="pq-answer">Median = 8</div>
+</div>
+
+<div class="practice-q">
+<div class="pq-top">
+<div>
+<strong>2.</strong> Find the range of: 5, 9, 12, 18
+</div>
+<button class="pq-toggle" onclick="toggleAnswer(this)">Show Answer</button>
+</div>
+<div class="pq-answer">Range = 18 − 5 = 13</div>
+</div>
+
+<div class="practice-q">
+<div class="pq-top">
+<div>
+<strong>3.</strong> A coin is tossed twice. Find the probability of getting two heads.
+</div>
+<button class="pq-toggle" onclick="toggleAnswer(this)">Show Answer</button>
+</div>
+<div class="pq-answer">1/4</div>
+</div>
+
+<div class="practice-q">
+<div class="pq-top">
+<div>
+<strong>4.</strong> Describe the correlation shown in a scatterplot where points rise from left to right.
+</div>
+<button class="pq-toggle" onclick="toggleAnswer(this)">Show Answer</button>
+</div>
+<div class="pq-answer">Positive correlation</div>
+</div>
+
+<div class="practice-q">
+<div class="pq-top">
+<div>
+<strong>5.</strong> A bag has 4 red and 6 blue counters. Find the probability of selecting a blue counter.
+</div>
+<button class="pq-toggle" onclick="toggleAnswer(this)">Show Answer</button>
+</div>
+<div class="pq-answer">6/10 = 3/5</div>
+</div>
+
+<div class="section-title">Common Mistakes</div>
+
+<div class="concept-card rose">
+  <div class="card-label">Exam Traps</div>
+  <h3>Things students often lose marks for</h3>
+  <ul style="margin-left:1.2rem;line-height:2">
+    <li>Leaving gaps in histograms</li>
+    <li>Confusing median and mean</li>
+    <li>Forgetting to simplify probabilities</li>
+    <li>Adding probabilities instead of multiplying</li>
+    <li>Misreading cumulative frequency graphs</li>
+    <li>Assuming correlation means causation</li>
+  </ul>
+</div>
+
+<div class="section-title">Final EOYA Advice</div>
+
+<div class="concept-card purple">
+  <div class="card-label">Revision Tips</div>
+  <h3>How to prepare effectively</h3>
+  <ul style="margin-left:1.2rem;line-height:2">
+    <li>Practise interpreting graphs, not just drawing them</li>
+    <li>Show full probability tree working</li>
+    <li>Memorise key formulas</li>
+    <li>Use diagrams whenever possible</li>
+    <li>Always explain conclusions in context</li>
+    <li>Focus on reasoning and communication</li>
+  </ul>
+</div>
+
+</div>
+</div>
+
+<script>
+
+function switchTab(page){
+
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+  });
+
+  document.querySelectorAll('.tab-bar button').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  document.getElementById('page-' + page).classList.add('active');
+
+  event.target.classList.add('active');
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+}
+
+function toggleAnswer(button){
+
+  const answer =
+    button.parentElement.parentElement.querySelector('.pq-answer');
+
+  answer.classList.toggle('open');
+
+  button.textContent =
+    answer.classList.contains('open')
+    ? 'Hide Answer'
+    : 'Show Answer';
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+
+  const aiToggle = document.getElementById('ai-toggle');
+  const aiWindow = document.getElementById('ai-window');
+  const aiClose = document.getElementById('ai-close');
+
+  const aiInput = document.getElementById('ai-input');
+  const aiSend = document.getElementById('ai-send');
+  const aiMessages = document.getElementById('ai-messages');
+
+  aiToggle.addEventListener('click', ()=>{
+
+    aiWindow.style.display =
+      aiWindow.style.display === 'flex'
+      ? 'none'
+      : 'flex';
+  });
+
+  aiClose.addEventListener('click', ()=>{
+    aiWindow.style.display = 'none';
+  });
+
+  aiSend.addEventListener('click', sendMessage);
+
+  aiInput.addEventListener('keypress', e=>{
+
+    if(e.key === 'Enter'){
+      sendMessage();
+    }
+  });
+
+  function addMessage(text,type){
+
+    const msg = document.createElement('div');
+
+    msg.className = `ai-msg ${type}`;
+
+    msg.innerHTML = text;
+
+    aiMessages.appendChild(msg);
+
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+
+  async function sendMessage(){
+
+    const text = aiInput.value.trim();
+
+    if(!text) return;
+
+    addMessage(text,'user');
+
+    aiInput.value = '';
+
+    addMessage('Typing...','bot');
+
+    try{
+
+      const response = await fetch('http://127.0.0.1:3000/chat',{
+
+        method:'POST',
+
+        headers:{
+          'Content-Type':'application/json'
+        },
+
+        body: JSON.stringify({
+          message:text
+        })
+
+      });
+
+      const data = await response.json();
+
+      document.querySelector('.ai-msg.bot:last-child').remove();
+
+      addMessage(data.reply,'bot');
+
+    } catch(err){
+
+      console.error(err);
+
+      document.querySelector('.ai-msg.bot:last-child').remove();
+
+      addMessage(
+        'Could not connect to AI server.',
+        'bot'
+      );
+    }
+  }
+
+});
+
+</script>
+
+<!-- AI Companion -->
+<div id="ai-companion">
+
+  <button id="ai-toggle">🧠</button>
+
+  <div id="ai-window">
+
+    <div class="ai-header">
+      <div>
+        <strong>MYP4 AI Companion</strong>
+        <span>Probability & Statistics Helper</span>
+      </div>
+
+      <button id="ai-close">×</button>
+    </div>
+
+    <div id="ai-messages">
+
+      <div class="ai-msg bot">
+        Hi! I'm your revision companion 👋<br><br>
+        Ask me about:
+        <ul>
+          <li>Mean / median / mode</li>
+          <li>Probability rules</li>
+          <li>Histograms</li>
+          <li>Conditional probability</li>
+          <li>EOYA revision tips</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="ai-input-area">
+      <input type="text" id="ai-input" placeholder="Ask a maths question...">
+      <button id="ai-send">Send</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+</body>
+</html>
+```

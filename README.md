@@ -12,5 +12,5 @@ An education web application that explores the use of AI to help students grasp 
 4. AI API Integration
 
 ## Status
-Frontend developed (Using AI-assissted development)
-Backend for AI Integration under progress
+- Frontend developed (Using AI-assissted development)
+- Backend for AI Integration under progress
